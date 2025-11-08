@@ -1,4 +1,4 @@
-package com.vincent.android.myled.view;
+package com.wz.ledcontrol.app.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
