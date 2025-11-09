@@ -1,7 +1,7 @@
 package com.wz.ledcontrol.app.ui
 
 
-import VTBLECallback
+import BLECallback
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.BLUETOOTH_CONNECT
 import android.Manifest.permission.BLUETOOTH_SCAN
