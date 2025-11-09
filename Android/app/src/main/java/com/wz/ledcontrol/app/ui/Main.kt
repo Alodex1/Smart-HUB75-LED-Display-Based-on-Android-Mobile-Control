@@ -1,7 +1,7 @@
 package com.wz.ledcontrol.app.ui
 
 
-import VTBLECallback
+import WZBLECallback
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.BLUETOOTH_CONNECT
 import android.Manifest.permission.BLUETOOTH_SCAN
@@ -17,22 +17,22 @@ import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
-import com.tbruyelle.rxpermissions2.RxPermissions
+import com.tbruyelle.rxpermissions3.RxPermissions
 import com.wz.ledcontrol.R
-import com.wz.ledcontrol.app.ble.VTBluetoothUtil
+import com.wz.ledcontrol.app.ble.WZBluetoothUtil
 import com.wz.ledcontrol.app.led.LEDController
 import com.wz.ledcontrol.app.utils.DeviceManager
 import com.wz.ledcontrol.app.utils.LED_DEFAULT_BRIGHTNESS
 import com.wz.ledcontrol.app.utils.REQUEST_ENABLE_BLUETOOTH
 import com.wz.ledcontrol.app.utils.ToastUtil
 import com.wz.ledcontrol.app.utils.logd
-import io.reactivex.functions.Consumer
+import io.reactivex.rxjava3.functions.Consumer
 
 /**
  * 首页
  *
  */
-class Main : Base(), VTBLECallback {
+class Main : Base(), WZBLECallback {
 
     // UI组件
     private lateinit var tvDeviceName: TextView
@@ -144,11 +144,11 @@ class Main : Base(), VTBLECallback {
 
     private fun initActionButtons() {
         findViewById<TextView>(R.id.btn_draw_normal).setOnClickListener {
-            startActivity(Intent(this, DrawNormalActivity::class.java))
+            startActivity(Intent(this, Draw::class.java))
         }
 
         findViewById<TextView>(R.id.btn_draw_gif).setOnClickListener {
-            startActivity(Intent(this, GIFActivity::class.java))
+            startActivity(Intent(this, GIF::class.java))
         }
 
         // 添加配对按钮（长按重连按钮显示配对信息）
@@ -241,7 +241,7 @@ class Main : Base(), VTBLECallback {
     }
 
     private fun checkBluetoothAndPermissions() {
-        if (!VTBluetoothUtil.isEnable(this)) {
+        if (!WZBluetoothUtil.isEnable(this)) {
             turnOnBluetooth()
         } else {
             checkLocationPermission()

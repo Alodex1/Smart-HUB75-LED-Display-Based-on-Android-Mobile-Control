@@ -1,18 +1,57 @@
-package com.wz.ledcontrol.app.app
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-import android.app.Application
-import com.tencent.mmkv.MMKV
-import com.wz.ledcontrol.app.led.LEDController
-import com.wz.ledcontrol.app.utils.ConfigManager
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url "https://maven.aliyun.com/repository/public"
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
 
-class LEDControlApp: Application() {
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-    override fun onCreate() {
-        super.onCreate()
-        // 初始化配置管理器
-        ConfigManager.init(this)
-
-        // 初始化LED控制器
-        LEDController.getInstance().initBLE(this)
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
+ext {
+    rxpermissions_version = '0.12'
+    rxjava_version = '2.2.21'
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url "https://maven.aliyun.com/repository/public"
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+
+
+

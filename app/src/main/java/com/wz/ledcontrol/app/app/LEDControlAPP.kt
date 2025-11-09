@@ -1,11 +1,11 @@
-package com.vincent.android.myled.app
+package com.wz.ledcontrol.app.app
 
 import android.app.Application
 import com.tencent.mmkv.MMKV
-import com.vincent.android.myled.led.LEDController
-import com.vincent.android.myled.utils.ConfigManager
+import com.wz.ledcontrol.app.led.LEDController
+import com.wz.ledcontrol.app.utils.ConfigManager
 
-class MyLEDApp: Application() {
+class LEDControlAPP: Application() {
 
     override fun onCreate() {
         super.onCreate()

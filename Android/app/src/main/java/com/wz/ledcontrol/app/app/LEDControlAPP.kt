@@ -1,6 +1,18 @@
 package com.wz.ledcontrol.app.app
 
 import android.app.Application
+import com.tencent.mmkv.MMKV
+import com.wz.ledcontrol.app.led.LEDController
+import com.wz.ledcontrol.app.utils.ConfigManager
 
-class LEDControlAPP : Application() {
+class LEDControlAPP: Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // 初始化配置管理器
+        ConfigManager.init(this)
+
+        // 初始化LED控制器
+        LEDController.getInstance().initBLE(this)
+    }
 }
